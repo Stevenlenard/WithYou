@@ -40,6 +40,65 @@ function toggleMusic() {
     }
 }
 
+function showSurprise() {
+    const surpriseMessages = [
+        {
+            title: "My Princess ",
+            message: "You're the most beautiful girl in my world. Your smile lights up my darkest days.",
+            signature: "Your Prince Charming"
+        },
+        {
+            title: "My Forever ",
+            message: "Every day with you feels like a dream. I'm so blessed to have you in my life.",
+            signature: "Your Always"
+        },
+        {
+            title: "My Heart ",
+            message: "You're my first thought in the morning and my last thought at night. I love you more each day.",
+            signature: "Your Love"
+        },
+        {
+            title: "My Baby ",
+            message: "Thank you for making my life complete. You're my perfect match in every way.",
+            signature: "Your Soulmate"
+        },
+        {
+            title: "My Everything ",
+            message: "You're my best friend, my love, my future. I can't imagine life without you.",
+            signature: "Yours Forever"
+        },
+        {
+            title: "My Queen ",
+            message: "You deserve all the love and happiness in the world. I'll make sure you get it.",
+            signature: "Your King"
+        },
+        {
+            title: "My Sunshine ",
+            message: "You brighten up my world just by being in it. Your love is my greatest blessing.",
+            signature: "Your Moon and Stars"
+        },
+        {
+            title: "My Angel ",
+            message: "God sent me an angel when He sent me you. You're my miracle.",
+            signature: "Your Guardian"
+        }
+    ];
+
+    const randomMessage = surpriseMessages[Math.floor(Math.random() * surpriseMessages.length)];
+    
+    const modal = document.createElement('div');
+    modal.className = 'surprise-modal animate__animated animate__zoomIn';
+    modal.innerHTML = `
+        <div class="surprise-content">
+            <h3>${randomMessage.title}</h3>
+            <p>${randomMessage.message}</p>
+            <p class="signature">${randomMessage.signature}</p>
+            <button onclick="this.parentElement.parentElement.remove()" class="close-btn">Close </button>
+        </div>
+    `;
+    document.body.appendChild(modal);
+}
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Background Music
@@ -263,16 +322,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Load gallery images
     const images = [
-        { src: 'images/core memories (2).jpg', caption: 'Our First Valentine\'s Date ❤️' },
-        { src: 'images/core memories (3).jpg', caption: 'The Day You Said Yes 💑' },
-        { src: 'images/core memories (4).jpg', caption: 'School Days Together 📚' },
-        { src: 'images/core memories (5).jpg', caption: 'Special Moments ✨' },
-        { src: 'images/core memories (6).jpg', caption: 'Forever Us 💕' },
-        { src: 'images/core memories (7).jpg', caption: 'My Everything 💖' },
-        { src: 'images/core memories (8).jpg', caption: 'Perfect Moments 🌟' },
-        { src: 'images/core memories (9).jpg', caption: 'Just Us Two 💑' },
-        { src: 'images/core memories (10).jpg', caption: 'Love You Forever 💘' },
-        { src: 'images/core memories (11).jpg', caption: 'My Happiness 🥰' }
+        { src: 'images/core memories (2).jpg', caption: 'Our First Valentine\'s Date ' },
+        { src: 'images/core memories (3).jpg', caption: 'The Day You Said Yes ' },
+        { src: 'images/core memories (4).jpg', caption: 'School Days Together ' },
+        { src: 'images/core memories (5).jpg', caption: 'Special Moments ' },
+        { src: 'images/core memories (6).jpg', caption: 'Forever Us ' },
+        { src: 'images/core memories (7).jpg', caption: 'My Everything ' },
+        { src: 'images/core memories (8).jpg', caption: 'Perfect Moments ' },
+        { src: 'images/core memories (9).jpg', caption: 'Just Us Two ' },
+        { src: 'images/core memories (10).jpg', caption: 'Love You Forever ' },
+        { src: 'images/core memories (11).jpg', caption: 'My Happiness ' }
     ];
 
     images.forEach(img => {
@@ -389,35 +448,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Toggle Music Function
-    function toggleMusic() {
-        const musicIcon = document.getElementById('musicIcon');
-        const visualizer = document.querySelector('.music-visualizer');
-        
-        if (isMusicPlaying) {
-            bgMusic.pause();
-            musicIcon.textContent = '';
-            isMusicPlaying = false;
-            if (visualizer) {
-                document.querySelectorAll('.bar').forEach(bar => {
-                    bar.style.animationPlayState = 'paused';
-                });
-            }
-        } else {
-            bgMusic.play().then(() => {
-                musicIcon.textContent = '';
-                isMusicPlaying = true;
-                if (visualizer) {
-                    document.querySelectorAll('.bar').forEach(bar => {
-                        bar.style.animationPlayState = 'running';
-                    });
-                }
-            }).catch(error => {
-                console.log("Playback failed:", error);
-            });
-        }
-    }
-
     // Love Letters
     function openLetter(type) {
         let message = '';
@@ -441,66 +471,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p>${message}</p>
                 <p class="signature">Love always,<br>Your Forever</p>
                 <button onclick="this.parentElement.parentElement.remove()">Close </button>
-            </div>
-        `;
-        document.body.appendChild(modal);
-    }
-
-    // Surprise Function
-    function showSurprise() {
-        const surpriseMessages = [
-            {
-                title: "My Princess 👸",
-                message: "You're the most beautiful girl in my world. Your smile lights up my darkest days.",
-                signature: "Your Prince Charming"
-            },
-            {
-                title: "My Forever 💑",
-                message: "Every day with you feels like a dream. I'm so blessed to have you in my life.",
-                signature: "Your Always"
-            },
-            {
-                title: "My Heart 💖",
-                message: "You're my first thought in the morning and my last thought at night. I love you more each day.",
-                signature: "Your Love"
-            },
-            {
-                title: "My Baby 🥰",
-                message: "Thank you for making my life complete. You're my perfect match in every way.",
-                signature: "Your Soulmate"
-            },
-            {
-                title: "My Everything ✨",
-                message: "You're my best friend, my love, my future. I can't imagine life without you.",
-                signature: "Yours Forever"
-            },
-            {
-                title: "My Queen 👑",
-                message: "You deserve all the love and happiness in the world. I'll make sure you get it.",
-                signature: "Your King"
-            },
-            {
-                title: "My Sunshine ☀️",
-                message: "You brighten up my world just by being in it. Your love is my greatest blessing.",
-                signature: "Your Moon and Stars"
-            },
-            {
-                title: "My Angel 👼",
-                message: "God sent me an angel when He sent me you. You're my miracle.",
-                signature: "Your Guardian"
-            }
-        ];
-
-        const randomMessage = surpriseMessages[Math.floor(Math.random() * surpriseMessages.length)];
-        
-        const modal = document.createElement('div');
-        modal.className = 'surprise-modal animate__animated animate__zoomIn';
-        modal.innerHTML = `
-            <div class="surprise-content">
-                <h3>${randomMessage.title}</h3>
-                <p>${randomMessage.message}</p>
-                <p class="signature">${randomMessage.signature}</p>
-                <button onclick="this.parentElement.parentElement.remove()" class="close-btn">Close 🎁</button>
             </div>
         `;
         document.body.appendChild(modal);
