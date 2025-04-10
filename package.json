@@ -1,0 +1,11 @@
+{
+  "name": "our-love-story",
+  "version": "1.0.0",
+  "description": "Our beautiful love story website",
+  "scripts": {
+    "build": "node optimize-images.js"
+  },
+  "dependencies": {
+    "sharp": "^0.32.0"
+  }
+}
